@@ -36,6 +36,13 @@ To run specs:
 rspec
 ```
 
+## Tasks
+
+- prepare list of topics
+- create initializer generator
+- AI to generate files
+- readme updates, how to use, options, how to contribute, links to other repos
+
 ## Contributing
 Contribution directions go here.
 
