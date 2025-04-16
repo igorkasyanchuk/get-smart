@@ -31,7 +31,7 @@ module Get
       every_twelve_hours: -> { 12.hours },
       daily: -> { 1.day },
       every_two_days: -> { 2.days },
-      weekly: -> { 1.week },
+      weekly: -> { 1.week }
     }
 
     mattr_accessor :enabled
@@ -40,7 +40,7 @@ module Get
     mattr_accessor :paths
     self.paths = [
       File.join(File.dirname(__FILE__), "..", "..", "files"),
-      File.join(File.dirname(__FILE__), "..", "..", "spec", "files"),
+      File.join(File.dirname(__FILE__), "..", "..", "spec", "files")
     ]
 
     mattr_accessor :collection

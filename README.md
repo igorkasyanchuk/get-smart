@@ -36,6 +36,14 @@ To run specs:
 rspec
 ```
 
+Linting:
+
+```bash
+bin/rubocop -f github
+# to fix errors automatically
+bin/rubocop -A
+```
+
 ## Tasks
 
 - prepare list of topics
