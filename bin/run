@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require_relative "../spec/dummy/config/application.rb"
+require "active_support/all"
+
+Get::Smart.enabled = true
+Get::Smart.logic.call

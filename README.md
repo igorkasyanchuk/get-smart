@@ -27,6 +27,10 @@ $ gem install get-smart
 cd spec/dummy
 bundle install --gemfile /Users/igor/projects/get-smart/Gemfile
 rails c
+
+# or in the root of the project
+
+bin/run
 ```
 
 To run specs:
