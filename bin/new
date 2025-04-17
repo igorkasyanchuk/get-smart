@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+
+require 'fileutils'
+topic_path = ARGV[0]
+
+if topic_path.nil?
+  puts "Usage: bin/new <topic_path>"
+  puts "Example: bin/new gems/devise"
+  puts "It will create a new topic in the files/gems/devise folder with all folders inside"
+  exit 1
+end
+
+FileUtils.mkdir_p("files/#{topic_path}/any")
+FileUtils.mkdir_p("files/#{topic_path}/beginner")
+FileUtils.mkdir_p("files/#{topic_path}/middle")
+FileUtils.mkdir_p("files/#{topic_path}/advanced")
+
+puts "Created #{topic_path} with all folders"

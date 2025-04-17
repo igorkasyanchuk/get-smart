@@ -1,6 +1,4 @@
 class Get::Smart::Memory
-  MEMORY_FILE = File.expand_path("~/.get-smart-memory")
-
   attr_reader :shown_files
 
   def initialize
@@ -32,11 +30,11 @@ class Get::Smart::Memory
   private
 
   def memory_file
-    File.open(File.expand_path(MEMORY_FILE), "a+")
+    File.open(File.expand_path(Get::Smart.memory_file_path), "a+")
   end
 
   def exists?
-    File.exist?(File.expand_path(MEMORY_FILE))
+    File.exist?(File.expand_path(Get::Smart.memory_file_path))
   end
 
   def init

@@ -4,6 +4,7 @@ require "get/smart/collection"
 require "get/smart/tip"
 require "get/smart/memory"
 require "get/smart/logic"
+require "get/smart/topics"
 require "tty-markdown"
 
 module Get
@@ -40,11 +41,13 @@ module Get
     mattr_accessor :paths
     self.paths = [
       File.join(File.dirname(__FILE__), "..", "..", "files"),
-      File.join(File.dirname(__FILE__), "..", "..", "spec", "files")
     ]
 
     mattr_accessor :collection
     self.collection = []
+
+    mattr_accessor :memory_file_path
+    self.memory_file_path = File.expand_path("~/.get-smart-memory")
 
     mattr_accessor :memory
     self.memory = Get::Smart::Memory.new
@@ -56,6 +59,11 @@ module Get
       def log(message)
         called_method = caller_locations(1, 1).first.label
         puts "#{called_method} -> #{message}" if debug
+      end
+
+      # Yield configuration to block for initializer
+      def setup
+        yield self if block_given?
       end
     end
   end

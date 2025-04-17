@@ -25,4 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "debug"
   spec.add_development_dependency "wrapped_print"
   spec.add_development_dependency "simplecov"
+  spec.add_development_dependency "ruby-openai"
+  spec.add_development_dependency "dotenv"
+  spec.add_development_dependency "colorize"
 end

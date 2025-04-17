@@ -1,5 +1,8 @@
 # Get::Smart
-Short description and motivation.
+
+Get Smart is a Rails gem, that shows you tips and tricks to help you get the most out of your Rails application.
+
+Every time you boot your Rails application, Get Smart will show you a tip on different topics.
 
 ## Usage
 How to use my plugin.
@@ -21,9 +24,35 @@ Or install it yourself as:
 $ gem install get-smart
 ```
 
+## Options
+
+```ruby
+Get::Smart.setup do |config|
+  # Enable or disable Get::Smart. Default: Rails.env.development?
+  config.enabled = Rails.env.development?
+
+  # Paths to scan for tip files. Default:
+  # config.paths += [Rails.root.join('custom-path')]
+
+  # Frequency for showing tips. Default: :always
+  config.frequency = :always
+  # Available options:
+  #   :always, :half_hourly, :hourly, :every_two_hours, :every_three_hours,
+  #   :every_four_hours, :every_five_hours, :every_six_hours, :every_seven_hours,
+  #   :every_eight_hours, :every_nine_hours, :every_ten_hours, :every_eleven_hours,
+  #   :every_twelve_hours, :daily, :every_two_days, :weekly,
+
+  # Path to the memory file. Default: ~/.get-smart-memory
+  # config.memory_file_path = File.expand_path("~/.get-smart-memory")
+end
+```
+
 ## Development
 
 ```bash
+# set OPENAI_API_KEY in .env, it can be used in bin/generator to create new tips. See source of bin/generator for more details.
+
+# in the root of the project
 cd spec/dummy
 bundle install --gemfile /Users/igor/projects/get-smart/Gemfile
 rails c
@@ -48,12 +77,42 @@ bin/rubocop -f github
 bin/rubocop -A
 ```
 
+## Structure of the files
+
+All content is stored in the `files` folder.
+
+Every file is a tip on a specific topic, must be named like `topic1.md`, `topic2.md`, etc.
+
+Every tip must start with a special comment with the tip title, for example:
+
+```ruby
+### 💎 Ruby Gem Tip: Generate Clean URLs Easily with `babosa`
+```
+
+Put file in any of the folder "<folder>/<any|beginner|middle|advanced>/<tip_title>.md"
+
+Rules:
+
+- Any - for general tips
+- Beginner - for beginner tips
+- Middle - for middle level tips
+- Advanced - for advanced tips.
+
+You can use CLI to add new folders for topics:
+
+```bash
+bin/new gems/devise
+```
+
+To create folders in files/gems/devise folders (any, beginner, middle, advanced).
+
 ## Tasks
 
 - prepare list of topics
 - create initializer generator
 - AI to generate files
 - readme updates, how to use, options, how to contribute, links to other repos
+- tips specific to the project (based on Gemfile, package.json, DB, etc)
 
 ## Contributing
 Contribution directions go here.

@@ -8,3 +8,8 @@
 /spec/dummy/storage/
 /spec/dummy/tmp/
 /coverage/
+
+.env
+
+tmp/
+.DS_Store

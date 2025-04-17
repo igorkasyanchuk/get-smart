@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "dotenv"
+Dotenv.load
+
+require "active_support/all"
+require_relative "../spec/dummy/config/application.rb"
+require "get/smart/ai/worker"
+
+Get::Smart::Ai::Worker.new("ruby string interpolation", count: 5, level: "any").call
