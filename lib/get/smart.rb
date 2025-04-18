@@ -10,7 +10,7 @@ require "tty-markdown"
 module Get
   module Smart
     mattr_accessor :debug
-    self.debug = true
+    self.debug = false
 
     mattr_accessor :frequency
     self.frequency = :always
@@ -40,7 +40,7 @@ module Get
 
     mattr_accessor :paths
     self.paths = [
-      File.join(File.dirname(__FILE__), "..", "..", "files"),
+      File.join(File.dirname(__FILE__), "..", "..", "files")
     ]
 
     mattr_accessor :collection

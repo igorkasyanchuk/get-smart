@@ -77,6 +77,29 @@ bin/rubocop -f github
 bin/rubocop -A
 ```
 
+## Generator
+
+Using Open AI API to generate tips.
+
+```bash
+bin/generator <topic> <path> <count> <level>
+```
+
+Example:
+
+```bash
+bin/generator "ruby on rails security tips & tricks" "rails/security" 10 "any"
+```
+
+## Tree
+
+```bash
+bin/tree
+```
+
+To see the stats about the tips.
+
+
 ## Structure of the files
 
 All content is stored in the `files` folder.

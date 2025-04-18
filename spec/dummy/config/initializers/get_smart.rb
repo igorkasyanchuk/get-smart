@@ -1,9 +1,11 @@
 Get::Smart.setup do |config|
+  config.debug = false
+
   # Enable or disable Get::Smart. Default: Rails.env.development?
   config.enabled = Rails.env.development?
 
   # Paths to scan for tip files. Default:
-  config.paths += [File.join(File.dirname(__FILE__), "..", "..", "..", "..", "spec", "files")]
+  config.paths += [ File.join(File.dirname(__FILE__), "..", "..", "..", "..", "spec", "files") ]
 
   # Frequency for showing tips. Default: :always
   config.frequency = :always

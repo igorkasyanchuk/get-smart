@@ -6,6 +6,25 @@ Dotenv.load
 
 require "active_support/all"
 require_relative "../spec/dummy/config/application.rb"
+require_relative "../spec/dummy/config/initializers/get_smart.rb"
 require "get/smart/ai/worker"
 
-Get::Smart::Ai::Worker.new("ruby string interpolation", count: 5, level: "any").call
+topic = ARGV.first
+path = ARGV.second
+count = ARGV.third
+level = ARGV.fourth.presence || "any"
+
+if topic.blank? || path.blank? || count.blank?
+  puts "Usage: bin/generator <topic> <path> <count> <level>"
+  puts "Example: bin/generator 'ruby in rails mailer' 'rails/mailer' 10 'advanced'"
+  exit 1
+end
+
+
+system("clear")
+system("bin/new #{path}")
+
+folder = "#{Dir.pwd}/files/#{path}"
+puts "Generating tips for [#{topic.to_s.red}]..., [#{count.to_s.green}] tips, level [#{level.to_s.blue}] and store in [#{folder.to_s.yellow}]"
+
+Get::Smart::Ai::Worker.new(topic, count: count, level: level, folder: folder).call
