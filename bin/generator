@@ -17,7 +17,7 @@ level = ARGV.fourth.presence || "all"
 if topic.blank? || path.blank? || count.blank?
   puts "Usage: bin/generator <topic> <path> <count> <level>"
   puts "-- Levels: beginner, middle, advanced, expert"
-  puts "Example: bin/generator 'ruby in rails mailer' 'rails/mailer' 10 'advanced'"
+  puts "Example: bin/generator 'ruby in rails mailer' 'files/rails/mailer' 10 'advanced'"
   exit 1
 end
 
@@ -29,7 +29,7 @@ end
 system("clear")
 system("bin/new #{path}")
 
-folder = "#{Dir.pwd}/files/#{path}"
+folder = "#{Dir.pwd}/#{path}"
 puts "Generating tips for [#{topic.to_s.red}]..., [#{count.to_s.green}] tips, level [#{level.to_s.blue}] and store in [#{folder.to_s.yellow}]"
 
 Get::Smart::Ai::Generator.new(topic, count: count, level: level, folder: folder).call

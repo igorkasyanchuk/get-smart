@@ -5,14 +5,14 @@ topic_path = ARGV[0]
 
 if topic_path.nil?
   puts "Usage: bin/new <topic_path>"
-  puts "Example: bin/new gems/devise"
+  puts "Example: bin/new files/gems/devise"
   puts "It will create a new topic in the files/gems/devise folder with all folders inside"
   exit 1
 end
 
-FileUtils.mkdir_p("files/#{topic_path}/beginner")
-FileUtils.mkdir_p("files/#{topic_path}/middle")
-FileUtils.mkdir_p("files/#{topic_path}/advanced")
-FileUtils.mkdir_p("files/#{topic_path}/expert")
+FileUtils.mkdir_p("#{topic_path}/beginner")
+FileUtils.mkdir_p("#{topic_path}/middle")
+FileUtils.mkdir_p("#{topic_path}/advanced")
+FileUtils.mkdir_p("#{topic_path}/expert")
 
 puts "Created #{topic_path} with all folders"
