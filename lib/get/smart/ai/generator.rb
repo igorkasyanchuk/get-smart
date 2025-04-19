@@ -3,10 +3,10 @@ require "colorize"
 
 module Get::Smart
   module Ai
-    class Worker
+    class Generator
       attr_reader :topic, :count, :level, :folder
 
-      def initialize(topic, count: 3, level: "all", folder:)
+      def initialize(topic, count: 10, level: "all", folder:)
         @topic = topic
         @count = count
         @level = level
@@ -24,7 +24,7 @@ module Get::Smart
           2.times { puts }
           puts TTY::Markdown.parse(tip["content"], indent: 0)
           2.times { puts }
-          # for development
+          # for development & testing
           # File.write(File.expand_path("../../../../../tmp/#{tip["filename"].to_s}.md", __FILE__), tip["content"])
 
           # for production
@@ -46,7 +46,8 @@ module Get::Smart
         @response ||= begin
           res = client.chat(
             parameters: {
-              model: "gpt-4.1-mini",
+              # https://platform.openai.com/docs/models
+              model: "o4-mini",
               temperature: 1,
               messages: [
                 { role: "assistant", content: instructions },
@@ -68,38 +69,49 @@ module Get::Smart
 
       def instructions
         <<~INSTRUCTIONS
-          You are a helpful assistant that can create a short and useful tip for a Ruby on Rails developers.
+        You are a helpful assistant that generates concise, practical Ruby on Rails tips in JSON format.
 
-          The tip should be short and to the point, and should be in the following format:
+        <GOAL>
+          Your goal is to generate #{count} tips for the given topic with the following level: #{level}.
+        </GOAL>
 
+        Requirements:
+        - Input: a single `<TOPIC>...</TOPIC>` tag specifying the focus.
+        - Output: a JSON object matching this schema:
+          {
+            "tips": [
+              {
+                "filename": "unique_string",
+                "content": "markdown_tip",
+                "level": "beginner" | "middle" | "advanced" | "expert"
+              },
+              ...
+            ]
+          }
+        - For each tip object:
+          - **filename**: a unique, descriptive identifier (no duplicates).
+          - **content**: markdown starting with a level-2 heading:
+            `## {emoji} Tip Title`
+            - Use a Unicode emoji followed by a space before the title.
+            - Write a description (why, what, and how; 2-4 sentences or even more if needed) and include one or more code examples.
+            - Add a blank line before each code block.
+            - Specify the language for every code block.
+            - send complete tip, not just code, make sure it is including all the information needed to implement the tip
+          - **level**: one of `"beginner"`, `"middle"`, `"advanced"`, or `"expert"`, indicating the target audience.
+        - Control tip count and levels:
+          - Generate at least **{count}** tips. If `count` is 0, generate as many as you can.
+          - If `level` is `"all"`, include tips across all levels; otherwise, only that level.
+          - Favor towards more advanced tips to challenge experienced developers if `level` is not specified.
+          - for "expert" level add super complex, strong, advanced tips, for developers with 8+ years of experience.
+          - when "level" is specified, generate only that level of tips. For example, if level is "expert", generate only expert tips.
+        - Keep tips short, actionable, and focused strictly on the provided topic.
+        - Do not include any extra fields or properties.
+        - Return only the JSON object—no additional text or commentary.
+        - You must follow the examples and instructions strictly.
+
+        <EXAMPLES>
           #{examples}
-
-          Requirements:
-          - you must follow only the provided value of <TOPIC> and requirements. Dont add information outside the <TOPIC>.
-          - you can use different emojis to make the tip more engaging in the title of the tip (first sentence).
-          - add a space after emoji. So it will be like this: `:emoji: tip title`.
-          - include examples of the tip in the tip.
-          - add new line before code block.
-          - always use uniq "filename" value for each tip in the JSON. Do not repeat the same value of "filename".
-          - use filename as a filename for the tip.
-          - always reply in JSON format with markdown content.
-          - use examples above for reference.
-          - keep tips short, but useful. You can add more examples if needed to explain the tip.
-          - specify programming language of the code in the tip.
-          - create at least #{count} tips. If count is 0 - create as many tips as you can.
-          - create tips for #{level} level. If specified level is "all", create tips for all levels.
-          - level must be any of "any", "beginner", "middle", "advanced".
-            - "beginner" level is for beginners who are just starting to learn Ruby on Rails.
-            - "middle" level is for developers who have some experience with Ruby on Rails. Include complex code snippets.
-            - "advanced" level is for experienced developers who are proficient in Ruby on Rails. Include strong and advanced code snippets.
-            - "any" level is for any level of developers with just useful tips. If tips is basic - just use "beginner" level.
-          - try to include more middle and advanced tips, so developers can learn something new.
-          - do not send level in the content body, but always send it in the JSON.
-          - format for beginning of the content is "## :emoji: tip title"
-          - you are allowed to include many code blocks in the content, but provide language for each code block, and add a new line before each code block.
-          - send only working code snippets
-
-          You must follow the requirements above and return only valid JSON object with valid schema.
+        </EXAMPLES>
         INSTRUCTIONS
       end
 
@@ -128,7 +140,7 @@ module Get::Smart
                       },
                       level: {
                         type: "string",
-                        enum: [ "any", "beginner", "middle", "advanced" ],
+                        enum: [ "beginner", "middle", "advanced", "expert" ],
                         description: "level of the tip for the target audience"
                       }
                     },
@@ -148,12 +160,12 @@ module Get::Smart
         examples = [
           {
             "filename": "string_interpolation",
-            "content": File.expand_path("../../../../../spec/files/other/any/file1.md", __FILE__),
-            "level": "any"
+            "content": File.expand_path("../../../../../spec/files/other/middle/file1.md", __FILE__),
+            "level": "advanced"
           },
           {
             "filename": "string_squeeze",
-            "content": File.expand_path("../../../../../spec/files/other/any/file2.md", __FILE__),
+            "content": File.expand_path("../../../../../spec/files/other/middle/file2.md", __FILE__),
             "level": "middle"
           }
         ]

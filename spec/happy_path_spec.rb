@@ -12,7 +12,6 @@ describe "Happy Path" do
     topics = Get::Smart::Collection.new.root_topics
 
     expect(topics).to include("/rails/mailer/beginner")
-    expect(topics).to include("/gems/babosa/any")
     expect(topics).to include("/gems/babosa")
     expect(topics).to include("/gems")
   end

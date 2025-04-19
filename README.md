@@ -88,7 +88,7 @@ bin/generator <topic> <path> <count> <level>
 Example:
 
 ```bash
-bin/generator "ruby on rails security tips & tricks" "rails/security" 10 "any"
+bin/generator "ruby on rails security tips & tricks" "rails/security" 10 "middle"
 ```
 
 ## Tree
@@ -112,14 +112,14 @@ Every tip must start with a special comment with the tip title, for example:
 ### 💎 Ruby Gem Tip: Generate Clean URLs Easily with `babosa`
 ```
 
-Put file in any of the folder "<folder>/<any|beginner|middle|advanced>/<tip_title>.md"
+Put file in any of the folder "<folder>/<beginner|middle|advanced|expert>/<tip_title>.md"
 
 Rules:
 
-- Any - for general tips
-- Beginner - for beginner tips
-- Middle - for middle level tips
-- Advanced - for advanced tips.
+- Beginner - tips for beginners
+- Middle - tips for middle level developers
+- Advanced - tips for advanced developers
+- Expert - tips for expert developers
 
 You can use CLI to add new folders for topics:
 
@@ -127,7 +127,7 @@ You can use CLI to add new folders for topics:
 bin/new gems/devise
 ```
 
-To create folders in files/gems/devise folders (any, beginner, middle, advanced).
+To create folders in files/gems/devise folders (beginner, middle, advanced, expert).
 
 ## Tasks
 

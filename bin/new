@@ -10,9 +10,9 @@ if topic_path.nil?
   exit 1
 end
 
-FileUtils.mkdir_p("files/#{topic_path}/any")
 FileUtils.mkdir_p("files/#{topic_path}/beginner")
 FileUtils.mkdir_p("files/#{topic_path}/middle")
 FileUtils.mkdir_p("files/#{topic_path}/advanced")
+FileUtils.mkdir_p("files/#{topic_path}/expert")
 
 puts "Created #{topic_path} with all folders"
