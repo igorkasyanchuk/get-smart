@@ -97,6 +97,8 @@ module Get::Smart
             - Add a blank line before each code block.
             - Specify the language for every code block.
             - send complete tip, not just code, make sure it is including all the information needed to implement the tip
+            - always block of code with ```.
+            - always add a new line after and before the code block.
           - **level**: one of `"beginner"`, `"middle"`, `"advanced"`, or `"expert"`, indicating the target audience.
         - Control tip count and levels:
           - Generate at least **{count}** tips. If `count` is 0, generate as many as you can.

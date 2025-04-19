@@ -132,6 +132,7 @@ To create folders in files/gems/devise folders (beginner, middle, advanced, expe
 ## Tasks
 
 - prepare list of topics
+- option to configure level for showing tips, allow multiple levels
 - create initializer generator
 - AI to generate files
 - readme updates, how to use, options, how to contribute, links to other repos
