@@ -9,8 +9,30 @@ require "tty-markdown"
 
 module Get
   module Smart
+    class << self
+      def root_path
+        File.expand_path("../../..", __FILE__)
+      end
+
+      def log(message)
+        called_method = caller_locations(1, 1).first.label
+        puts "#{called_method} -> #{message}" if debug
+      end
+
+      # Yield configuration to block for initializer
+      def setup
+        yield self if block_given?
+      end
+    end
+
     mattr_accessor :debug
-    self.debug = false
+    self.debug = true
+
+    mattr_accessor :print_file_details
+    self.print_file_details = false
+
+    mattr_accessor :level
+    self.level = :any
 
     mattr_accessor :frequency
     self.frequency = :always
@@ -40,11 +62,11 @@ module Get
 
     mattr_accessor :paths
     self.paths = [
-      File.join(File.dirname(__FILE__), "..", "..", "files")
+      File.join(Get::Smart.root_path, "files")
     ]
 
     mattr_accessor :collection
-    self.collection = []
+    self.collection = nil
 
     mattr_accessor :memory_file_path
     self.memory_file_path = File.expand_path("~/.get-smart-memory")
@@ -54,17 +76,5 @@ module Get
 
     mattr_accessor :logic
     self.logic = Get::Smart::Logic.new
-
-    class << self
-      def log(message)
-        called_method = caller_locations(1, 1).first.label
-        puts "#{called_method} -> #{message}" if debug
-      end
-
-      # Yield configuration to block for initializer
-      def setup
-        yield self if block_given?
-      end
-    end
   end
 end

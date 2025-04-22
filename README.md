@@ -79,7 +79,7 @@ bin/rubocop -A
 
 ## Generator
 
-Using Open AI API to generate tips.
+Using Open AI API to generate tips (see example below in the readme, in #structure-of-the-files).
 
 ```bash
 bin/generator <topic> <path> <count> <level>
@@ -91,10 +91,10 @@ Example:
 bin/generator "ruby on rails security tips & tricks" "rails/security" 10 "middle"
 ```
 
-## Tree
+## Tree (in Rails app)
 
 ```bash
-bin/tree
+bin/rails get_smart:tree
 ```
 
 To see the stats about the tips.
@@ -126,6 +126,19 @@ You can use CLI to add new folders for topics:
 ```bash
 bin/new gems/devise
 ```
+
+Example:
+
+Change the topic to "file compression in ruby" and specify number of tips to generate for each level.
+
+```bash
+bundle exec bin/generator "file compression in ruby beginner usage examples"          "files/ruby/compression"         2 "beginner"
+bundle exec bin/generator "file compression in ruby middle usage examples"            "files/ruby/compression"         2 "middle"
+bundle exec bin/generator "file compression in ruby advanced usage examples"          "files/ruby/compression"         2 "advanced"
+bundle exec bin/generator "file compression in ruby expert usage examples"            "files/ruby/compression"         2 "expert"
+```
+
+
 
 To create folders in files/gems/devise folders (beginner, middle, advanced, expert).
 

@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    get-smart (0.1.0)
+    get-smart (0.0.1)
       rails
       tty-markdown
 

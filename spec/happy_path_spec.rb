@@ -8,11 +8,11 @@ describe "Happy Path" do
     expect { Get::Smart.logic.call }.not_to raise_error
   end
 
-  xit "get correct topisc" do
-    topics = Get::Smart::Collection.new.root_topics
+  it "get correct topisc" do
+    topics = Get::Smart::Collection.new.topics.map { |info| info[:topics] }.flatten
 
-    expect(topics).to include("/rails/mailer/beginner")
-    expect(topics).to include("/gems/babosa")
+    expect(topics).to include("/rails/active_storage")
+    expect(topics).to include("/gems/devise/beginner")
     expect(topics).to include("/gems")
   end
 end

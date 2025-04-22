@@ -2,7 +2,7 @@ module Get
   module Smart
     class Topics
       def available_topics
-        @available_topics ||= Get::Smart::Collection.new.root_topics
+        @available_topics ||= Get::Smart::Collection.new.topics.values.flatten
       end
 
       def interested_topics

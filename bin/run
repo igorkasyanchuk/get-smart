@@ -7,9 +7,3 @@ require "active_support/all"
 
 Get::Smart.enabled = true
 Get::Smart.logic.call
-
-# puts '--'
-# Get::Smart::Collection.new.root_topics.each do |topic|
-#   puts topic
-# end
-# puts '--'

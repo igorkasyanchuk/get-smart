@@ -1,8 +1,20 @@
+#
+# THIS CONFIG IS NOT USED IN THE SPECS
+#
+# It's used to test the gem in a dummy Rails app
+#
+
 Get::Smart.setup do |config|
   config.debug = false
 
   # Enable or disable Get::Smart. Default: Rails.env.development?
   config.enabled = Rails.env.development?
+
+  # Print file details. Default: false
+  config.print_file_details = true
+
+  config.level = [:advanced, :expert]
+  # config.level = [:any, :beginner, :middle, :advanced, :expert]
 
   # Paths to scan for tip files. Default:
   config.paths += [ File.join(File.dirname(__FILE__), "..", "..", "..", "..", "spec", "files") ]
