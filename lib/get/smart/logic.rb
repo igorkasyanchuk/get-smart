@@ -40,7 +40,7 @@ class Get::Smart::Logic
   end
 
   def filter_by_level(files)
-    if current_level == [:any]
+    if current_level == [ :any ]
       files
     else
       files.select { |file| file =~ current_level_regexp }

@@ -13,7 +13,7 @@ Get::Smart.setup do |config|
   # Print file details. Default: false
   config.print_file_details = true
 
-  config.level = [:advanced, :expert]
+  config.level = [ :advanced, :expert ]
   # config.level = [:any, :beginner, :middle, :advanced, :expert]
 
   # Paths to scan for tip files. Default:

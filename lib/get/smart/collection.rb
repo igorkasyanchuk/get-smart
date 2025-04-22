@@ -24,7 +24,7 @@ class Get::Smart::Collection
 
   def print_tree
     tree = {}
-    Get::Smart::collection.topics.each do |info|
+    Get::Smart.collection.topics.each do |info|
       info[:topics].each do |topic|
         tree[topic] ||= 0
         tree[topic] += Dir.glob(File.join(info[:path], topic, "**", "**", "**")).select { |file| File.file?(file) }.size
