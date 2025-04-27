@@ -6,5 +6,8 @@ require_relative "../spec/dummy/config/initializers/get_smart.rb"
 require "active_support/all"
 
 Get::Smart.enabled = true
-Get::Smart.logic = Get::Smart::Logic.new
-Get::Smart.logic.call
+Get::Smart::Topics.all.first(3).each do |topic|
+  puts "--------------------------------"
+  puts topic.name
+  puts topic.files
+end

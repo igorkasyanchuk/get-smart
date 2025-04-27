@@ -1,8 +1,17 @@
 class Get::Smart::Logic
+  attr_reader :collection, :memory, :files
+
   def initialize
     validate_level
 
-    Get::Smart.collection = Get::Smart::Collection.new
+    @topics = Get::Smart::Topics.all
+    @memory = Get::Smart::Memory.new
+
+    @collection = Get::Smart::Collection.new(@topics)
+    @files = filter_by_level(collection.files)
+
+    Get::Smart.log("Files before filtering: #{collection.files.size}")
+    Get::Smart.log("Files after filtering: #{files.size}")
   end
 
   def call
@@ -10,20 +19,20 @@ class Get::Smart::Logic
 
     @random_file = random_file
 
-    if @random_file.nil? && Get::Smart.collection.files.any?
-      Get::Smart.memory.reset
+    if @random_file.nil? && files.any?
+      memory.reset
       @random_file = random_file
     end
 
     Get::Smart.log("Getting random file: #{@random_file}")
-    Get::Smart::Tip.call(@random_file)
-    Get::Smart.memory.write(@random_file)
+    Get::Smart::Tip.print(@random_file)
+    memory.write(@random_file)
   end
 
   def show?
-    last_shown_datetime = Get::Smart.memory.last_shown_datetime
+    last_shown_datetime = memory.last_shown_datetime
 
-    Get::Smart.log("Level: #{Get::Smart.logic.current_level}")
+    Get::Smart.log("Level: #{current_level}")
     Get::Smart.log("Last shown datetime: #{last_shown_datetime}")
     Get::Smart.log("Frequency: #{Get::Smart.frequency}")
     Get::Smart.log("Frequency datetime: #{frequency_datetime}")
@@ -59,13 +68,12 @@ class Get::Smart::Logic
   private
 
   def random_file
-    all_files = Get::Smart.collection.files
-    shown_files = Get::Smart.memory.shown_files
+    shown_files = memory.shown_files
 
-    Get::Smart.log("All files: #{all_files.size}")
+    Get::Smart.log("All available and filtered files: #{files.size}")
     Get::Smart.log("Shown files: #{shown_files.size}")
 
-    available_files = (all_files - shown_files)
+    available_files = (files - shown_files)
     Get::Smart.log("Available files: #{available_files.size}")
     available_files.sample
   end

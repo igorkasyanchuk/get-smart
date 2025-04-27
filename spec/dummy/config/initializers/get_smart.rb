@@ -5,7 +5,7 @@
 #
 
 Get::Smart.setup do |config|
-  config.debug = false
+  config.debug = true
 
   # Enable or disable Get::Smart. Default: Rails.env.development?
   config.enabled = Rails.env.development?

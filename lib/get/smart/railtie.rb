@@ -5,6 +5,7 @@ module Get
 
       config.after_initialize do |app|
         if Get::Smart.enabled
+          Get::Smart.logic = Get::Smart::Logic.new
           Get::Smart.logic.call
         end
       end
@@ -15,7 +16,7 @@ module Get
       end
 
       at_exit do
-        Get::Smart.memory&.close
+        Get::Smart.logic&.memory&.close
       end
     end
   end

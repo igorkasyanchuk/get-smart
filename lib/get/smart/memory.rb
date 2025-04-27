@@ -2,12 +2,11 @@ class Get::Smart::Memory
   attr_reader :shown_files
 
   def initialize
-    init
+    @shown_files = memory_file.readlines.compact_blank.map(&:strip)
   end
 
   def write(file_path)
     memory_file.write("#{file_path}\n")
-    @shown_files << file_path
   end
 
   def close
@@ -18,7 +17,7 @@ class Get::Smart::Memory
     Get::Smart.log("Resetting memory")
     memory_file.truncate(0)
     memory_file.rewind
-    init
+    @shown_files = []
   end
 
   def last_shown_datetime
@@ -35,9 +34,5 @@ class Get::Smart::Memory
 
   def exists?
     File.exist?(File.expand_path(Get::Smart.memory_file_path))
-  end
-
-  def init
-    @shown_files = memory_file.readlines.compact_blank.map(&:strip)
   end
 end

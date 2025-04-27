@@ -1,5 +1,5 @@
 class Get::Smart::Tip
-  def self.call(path)
+  def self.print(path)
     return if path.nil?
 
     level = path.split("/")[-2].to_sym

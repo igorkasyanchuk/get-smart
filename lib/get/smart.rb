@@ -5,6 +5,7 @@ require "get/smart/tip"
 require "get/smart/memory"
 require "get/smart/logic"
 require "get/smart/topics"
+require "get/smart/topic"
 require "tty-markdown"
 
 module Get
@@ -65,16 +66,10 @@ module Get
       File.join(Get::Smart.root_path, "files")
     ]
 
-    mattr_accessor :collection
-    self.collection = nil
-
     mattr_accessor :memory_file_path
     self.memory_file_path = File.expand_path("~/.get-smart-memory")
 
-    mattr_accessor :memory
-    self.memory = Get::Smart::Memory.new
-
     mattr_accessor :logic
-    self.logic = Get::Smart::Logic.new
+    self.logic = nil
   end
 end
