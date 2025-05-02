@@ -7,7 +7,7 @@ require "get/smart/logic"
 require "get/smart/topics"
 require "get/smart/topic"
 require "tty-markdown"
-
+require "tty-box"
 module Get
   module Smart
     class << self
@@ -30,7 +30,7 @@ module Get
     self.debug = true
 
     mattr_accessor :print_file_details
-    self.print_file_details = false
+    self.print_file_details = true
 
     mattr_accessor :level
     self.level = :any

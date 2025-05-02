@@ -25,7 +25,7 @@ class Get::Smart::Logic
     end
 
     Get::Smart.log("Getting random file: #{@random_file}")
-    Get::Smart::Tip.print(@random_file)
+    Get::Smart::Tip.print_tip(@random_file)
     memory.write(@random_file)
   end
 

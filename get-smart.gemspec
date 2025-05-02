@@ -21,6 +21,7 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails"
   spec.add_dependency "tty-markdown"
+  spec.add_dependency "tty-box"
 
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "debug"
