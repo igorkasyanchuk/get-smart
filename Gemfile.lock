@@ -344,7 +344,6 @@ DEPENDENCIES
   ruby-openai
   simplecov
   sqlite3
-  tty-tree
   wrapped_print
 
 BUNDLED WITH
