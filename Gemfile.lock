@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    get-smart (0.0.1)
+    get-smart (0.0.2)
       colorize
       rails
       tty-box

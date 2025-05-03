@@ -31,7 +31,7 @@ module Get
     end
 
     mattr_accessor :debug
-    self.debug = true
+    self.debug = false
 
     mattr_accessor :print_file_details
     self.print_file_details = true
