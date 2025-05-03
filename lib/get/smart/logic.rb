@@ -9,6 +9,7 @@ class Get::Smart::Logic
 
     @collection = Get::Smart::Collection.new(@topics)
     @files = filter_by_level(collection.files)
+    @files = filter_by_learning_path(@files)
 
     Get::Smart.log("Files before filtering: #{collection.files.size}")
     Get::Smart.log("Files after filtering: #{files.size}")
@@ -78,11 +79,17 @@ class Get::Smart::Logic
     available_files.sample
   end
 
-  private
-
   def validate_level
     unless current_level.all? { |level| level.in?(%i[any beginner middle advanced expert]) }
       raise "Invalid level: #{Get::Smart.level}. Valid levels are: any, beginner, middle, advanced, expert"
+    end
+  end
+
+  def filter_by_learning_path(files)
+    learning_path = Get::Smart::LearningPath.new.call
+
+    files.select do |file|
+      learning_path.any? { |path| file.include?(path) }
     end
   end
 end

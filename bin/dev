@@ -11,3 +11,7 @@ Get::Smart::Topics.all.first(3).each do |topic|
   puts topic.name
   puts topic.files
 end
+
+puts "======"
+
+pp Get::Smart::AppContext.new.call

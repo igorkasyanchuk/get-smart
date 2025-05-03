@@ -4,13 +4,14 @@ class Get::Smart::Tip
 
     level = path.split("/")[-2].to_s
     file_name = File.basename(path)
+    folder = path.split("/")[-4..-3].join("/")
 
     # print width of the box
     width = TTY::Screen.width - 4
 
     if Get::Smart.print_file_details
       print "┌".yellow
-      print "─────[#{file_name}] / [#{level}]".ljust(width, "─").yellow
+      print "─────[#{folder}##{file_name}] / [#{level}]".ljust(width, "─").yellow
       print "┐".yellow
       puts
     end
