@@ -1,4 +1,6 @@
-# Get::Smart
+# Get::Smart - Learn Ruby and Rails by examples
+
+![Get::Smart](./docs/example.png)
 
 Learn something new every time you boot your Rails application.
 
@@ -10,11 +12,7 @@ If you want to contribute, please create a PR with your changes.
 
 ## Usage
 
-Just add the gem to your Gemfile:
-
-```ruby
-gem "get-smart", group: :development
-```
+Just add the gem into your Gemfile. And start your Rails application.
 
 Gem supports a few options to customize the behavior. See #Options for more details.
 
@@ -32,13 +30,17 @@ And then execute:
 $ bundle
 ```
 
-Or install it yourself as:
+## Options
+
+You can configure the gem in your `config/initializers/get_smart.rb` file.
+
+To create the default config file run:
 
 ```bash
-$ gem install get-smart
+rails g get:smart:install
 ```
 
-## Options
+And edit the generated file.
 
 ```ruby
 if defined?(Get::Smart)
@@ -129,6 +131,8 @@ bin/rails get_smart:tree
 To see the stats about the tips.
 
 ## Structure of the files
+
+![Structure of the files](./docs/structure.png)
 
 All content is stored in the `files` folder. Just use a similar structure to store your tips.
 
