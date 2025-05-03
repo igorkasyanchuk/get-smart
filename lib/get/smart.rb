@@ -10,6 +10,8 @@ require "get/smart/app_context"
 require "get/smart/learning_path"
 require "tty-markdown"
 require "tty-box"
+require "colorize"
+
 module Get
   module Smart
     class << self

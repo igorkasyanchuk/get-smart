@@ -2,9 +2,11 @@ PATH
   remote: .
   specs:
     get-smart (0.0.1)
+      colorize
       rails
       tty-box
       tty-markdown
+      tty-tree
 
 GEM
   remote: https://rubygems.org/
@@ -308,6 +310,7 @@ GEM
       tty-color (~> 0.5)
       tty-screen (~> 0.8)
     tty-screen (0.8.2)
+    tty-tree (0.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.6.0)
@@ -341,6 +344,7 @@ DEPENDENCIES
   ruby-openai
   simplecov
   sqlite3
+  tty-tree
   wrapped_print
 
 BUNDLED WITH

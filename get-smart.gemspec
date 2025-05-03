@@ -22,6 +22,8 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rails"
   spec.add_dependency "tty-markdown"
   spec.add_dependency "tty-box"
+  spec.add_dependency "tty-tree"
+  spec.add_dependency "colorize"
 
   spec.add_development_dependency "rspec-rails"
   spec.add_development_dependency "debug"
@@ -29,5 +31,4 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov"
   spec.add_development_dependency "ruby-openai"
   spec.add_development_dependency "dotenv"
-  spec.add_development_dependency "colorize"
 end

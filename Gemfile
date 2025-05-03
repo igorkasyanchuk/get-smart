@@ -15,3 +15,4 @@ gem "rubocop-rails-omakase", require: false
 
 gem "redis"
 gem "devise"
+gem "colorize"

@@ -176,6 +176,9 @@ To create folders in files/gems/devise folders (beginner, middle, advanced, expe
 - maybe exclude from running rake tasks? at least with some flag
 - allow adding custom paths (already kind of done, but lets see if it's really needed)
 - think about nicer way to print tip in the console?
+- better contextual suggestions? (handle JS, CSS, React, etc). See @learning_path.rb
+- more topics
+- improve code coverage
 
 ## Contributing
 
