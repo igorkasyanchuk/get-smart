@@ -8,3 +8,17 @@ require "active_support/all"
 Get::Smart.enabled = true
 Get::Smart.logic = Get::Smart::Logic.new
 Get::Smart.logic.call
+
+# Inspect file sizes:
+
+# files = Dir.glob("files/**/*.md")
+# res = {}
+
+# files.each do |file|
+#   res[file] = File.size(file)
+# end
+
+# res = res.sort_by { |_, size| size }.reverse
+# res.each do |file, size|
+#   puts "#{file}: #{size.to_s.green}"
+# end

@@ -26,13 +26,13 @@ module Get::Smart
               "generationConfig": {
                 "response_mime_type": "application/json",
                 "temperature": temperature,
-                "maxOutputTokens": 30000,
+                "maxOutputTokens": 30000
               },
               "system_instruction": {
                 "parts": [ {
                   "text": instructions
                 } ]
-              },
+              }
             }.to_json
           end
         end
