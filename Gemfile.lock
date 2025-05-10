@@ -336,6 +336,7 @@ DEPENDENCIES
   debug
   devise
   dotenv
+  faraday
   get-smart!
   puma
   redis

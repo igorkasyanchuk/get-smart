@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "simplecov"
   spec.add_development_dependency "ruby-openai"
   spec.add_development_dependency "dotenv"
+  spec.add_development_dependency "faraday"
 end

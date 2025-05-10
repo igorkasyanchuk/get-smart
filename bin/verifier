@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "dotenv"
+Dotenv.load
+
+require "active_support/all"
+require_relative "../spec/dummy/config/application.rb"
+require_relative "../spec/dummy/config/initializers/get_smart.rb"
+require "get/smart/ai/verifier"
+
+folder = ARGV.first
+
+Get::Smart::Ai::Verifier.new(folder: folder).call

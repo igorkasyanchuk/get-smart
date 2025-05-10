@@ -10,9 +10,9 @@ if topic_path.nil?
   exit 1
 end
 
-FileUtils.mkdir_p("#{topic_path}/beginner")
-FileUtils.mkdir_p("#{topic_path}/middle")
-FileUtils.mkdir_p("#{topic_path}/advanced")
-FileUtils.mkdir_p("#{topic_path}/expert")
+FileUtils.mkdir_p("#{topic_path}/beginner").gsub("//", "/")
+FileUtils.mkdir_p("#{topic_path}/middle").gsub("//", "/")
+FileUtils.mkdir_p("#{topic_path}/advanced").gsub("//", "/")
+FileUtils.mkdir_p("#{topic_path}/expert").gsub("//", "/")
 
 puts "Created #{topic_path} with all folders"

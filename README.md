@@ -120,6 +120,12 @@ Example:
 bin/generator "ruby on rails security tips & tricks" "rails/security" 10 "middle"
 ```
 
+Later you can verify the tips with (see #Verifier for more details).
+
+```bash
+bin/verifier files/rails/security
+```
+
 ## Tree (in Rails app)
 
 Get a tree of all the tips in the `files` folder (according to the current gem config).
@@ -170,8 +176,17 @@ bundle exec bin/generator "file compression in ruby advanced usage examples"    
 bundle exec bin/generator "file compression in ruby expert usage examples"            "files/ruby/compression"         2 "expert"
 ```
 
-
 To create folders in files/gems/devise folders (beginner, middle, advanced, expert).
+
+## Verifier
+
+Verifier uses Gemini API to verify the tips (an additional step to ensure the quality of the tips). Setup Gemini API key in `.env` file.
+
+To verify the tips run:
+
+```bash
+bin/verifier files/gems/devise
+```
 
 ## Tasks
 
