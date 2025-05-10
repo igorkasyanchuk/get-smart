@@ -1,5 +1,8 @@
 # Get::Smart - Learn Ruby and Rails by examples
 
+[![RailsJazz](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/my_other.svg?raw=true)](https://www.railsjazz.com)
+[![https://www.patreon.com/igorkasyanchuk](https://github.com/igorkasyanchuk/rails_time_travel/blob/main/docs/patron.svg?raw=true)](https://www.patreon.com/igorkasyanchuk)
+
 ![Get::Smart](./docs/example.png)
 
 Learn something new every time you boot your Rails application.
