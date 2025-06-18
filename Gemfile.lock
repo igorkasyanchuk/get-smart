@@ -93,7 +93,7 @@ GEM
     connection_pool (2.5.1)
     crass (1.0.6)
     date (3.4.1)
-    debug (1.10.0)
+    debug (1.11.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
     devise (4.9.4)
@@ -106,6 +106,7 @@ GEM
     docile (1.4.1)
     dotenv (3.1.8)
     drb (2.2.1)
+    erb (5.0.1)
     erubi (1.13.1)
     event_stream_parser (1.0.0)
     faraday (2.13.0)
@@ -170,7 +171,7 @@ GEM
       prettyprint
     prettyprint (0.2.0)
     prism (1.4.0)
-    psych (5.2.3)
+    psych (5.2.6)
       date
       stringio
     puma (6.6.0)
@@ -215,7 +216,8 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
-    rdoc (6.13.1)
+    rdoc (6.14.1)
+      erb
       psych (>= 4.0.0)
     redis (5.3.0)
       redis-client (>= 0.22.0)
@@ -288,7 +290,7 @@ GEM
     simplecov_json_formatter (0.1.4)
     sqlite3 (2.6.0-arm64-darwin)
     sqlite3 (2.6.0-x86_64-linux-gnu)
-    stringio (3.1.6)
+    stringio (3.1.7)
     strings (0.2.1)
       strings-ansi (~> 0.2)
       unicode-display_width (>= 1.5, < 3.0)
