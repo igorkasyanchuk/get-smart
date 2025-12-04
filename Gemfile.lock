@@ -104,7 +104,7 @@ GEM
       warden (~> 1.2.3)
     diff-lcs (1.6.0)
     docile (1.4.1)
-    dotenv (3.1.8)
+    dotenv (3.2.0)
     drb (2.2.1)
     erubi (1.13.1)
     event_stream_parser (1.0.0)
